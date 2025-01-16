@@ -1,6 +1,4 @@
-# Project Name
-
-n-tier TP solo
+# n-tier TP solo
 
 ## Routes
 
