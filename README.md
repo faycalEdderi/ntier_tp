@@ -31,6 +31,12 @@ Use the gateway url and add the endpoint you need
 - `PUT /edit/:id`: Update an existing publication by ID.
 - `DELETE /delete/:id`: Delete a publication by ID.
 
+### Redis and cache (not finished)
+
+The method cachePublication use the cache with redis which is configured to use the cache to get the publication and expire after 5min 
+However the method and the logic need more dev to be implemented without regression in the rest of the code so cachePublication isn't use for the moment
+
+
 ### Frontend
 
 - `http://localhost:3000/publications`: create publication
