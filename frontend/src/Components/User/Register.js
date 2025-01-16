@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './User.css'; // Import the CSS file
 
 const Register = () => {
     const [name, setUsername] = useState('');
@@ -11,7 +12,7 @@ const Register = () => {
     const handleRegister = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:3001/users/create', {
+            await axios.post('http://localhost:3001/users/create', {
                 name,
                 password,
                 email,
@@ -25,40 +26,30 @@ const Register = () => {
     };
 
     return (
-        <div>
-            <h2>Register</h2>
+        <div className="container">
             <form onSubmit={handleRegister}>
-                <div>
-                    <label>Username:</label>
-                    <input
-                        type="text"
-                        value={name}
-                        onChange={(e) => setUsername(e.target.value)}
-                        required
-                    />
-                </div>
-                <div>
-                    <label>Password:</label>
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
-                </div>
-                <div>
-                    <label>Email:</label>
-                    <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                    />
-                </div>
+                {error && <div className="error">{error}</div>}
+                {success && <div className="success">{success}</div>}
+                <input
+                    type="text"
+                    placeholder="Username"
+                    value={name}
+                    onChange={(e) => setUsername(e.target.value)}
+                />
+                <input
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+                <input
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
                 <button type="submit">Register</button>
             </form>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
-            {success && <p style={{ color: 'green' }}>{success}</p>}
         </div>
     );
 };

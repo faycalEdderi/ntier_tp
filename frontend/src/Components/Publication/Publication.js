@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './Publication.css';
 
 const AddPublication = () => {
   const [publication, setPublication] = useState({ title: "" });
@@ -91,7 +92,7 @@ const AddPublication = () => {
   };
 
   return (
-    <div>
+    <div className="container">
       {selectedPublication && (
         <div>
           <h2>Détails de la publication</h2>
@@ -113,9 +114,11 @@ const AddPublication = () => {
         {publications.map((pub) => (
           <li key={pub._id}>
             {pub.title}
-            <button onClick={() => handleSelect(pub._id)}>Détails</button>
-            <button onClick={(e) => { e.stopPropagation(); handleDelete(pub._id); }}>Supprimer</button>
-            <button onClick={(e) => { e.stopPropagation(); handleEdit(pub); }}>Modifier</button>
+            <div>
+              <button onClick={() => handleSelect(pub._id)}>Détails</button>
+              <button onClick={(e) => { e.stopPropagation(); handleDelete(pub._id); }}>Supprimer</button>
+              <button onClick={(e) => { e.stopPropagation(); handleEdit(pub); }}>Modifier</button>
+            </div>
           </li>
         ))}
       </ul>
