@@ -15,8 +15,8 @@ const {
 router.post("/create", authMiddleware, createPublication);
 router.get("/getPublications", getPublication);
 router.get("/getPublication/:id", getPublicationById);
-router.delete("/delete/:id", deletePublication);
-router.put("/edit/:id", updatePublication);
+router.delete("/delete/:id", authMiddleware, deletePublication);
+router.put("/edit/:id", authMiddleware, updatePublication);
 
 router.get("/get", cachePublication);
 

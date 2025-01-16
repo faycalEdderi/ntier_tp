@@ -1,4 +1,3 @@
-// filepath: /home/faycal/Documents/DEV/ntier_tp/frontend/src/Components/User/Login.js
 import React, { useState } from 'react';
 import axios from 'axios';
 import './User.css'; // Import the CSS file
@@ -12,10 +11,11 @@ const Login = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:3001/users/login', {
+            const response = await axios.post('http://localhost:3001/users/login', {
                 email,
                 password,
             });
+            localStorage.setItem('token', response.data.token); // Store the token in local storage
             setSuccess('User logged in successfully!');
             setError('');
         } catch (err) {
