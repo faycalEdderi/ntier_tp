@@ -17,7 +17,6 @@ publication/node_modules/
 user/node_modules/
 
 # Build directories
-frontend/
 frontend/build/
 api-gateway/build/
 publication/build/
