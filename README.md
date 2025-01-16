@@ -21,7 +21,6 @@ Use the gateway url and add the endpoint you need
 
 ### User Routes
 
-- `GET /users`: Retrieve a list of all users.
 - `POST /create`: Create a new user.
 - `POST /login`: Login with a user.
 
