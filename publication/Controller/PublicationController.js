@@ -25,6 +25,18 @@ const getPublication = async (req, res) => {
   }
 };
 
+const getPublicationById = async (req, res) => {
+  try {
+    const publication = await Publication.findById(req.params.id);
+    if (!publication) {
+      return res.status(404).send({ error: "Publication not found" });
+    }
+    res.status(200).send(publication);
+  } catch (error) {
+    res.status(400).send({ error: error.message });
+  }
+};
+
 const deletePublication = async (req, res) => {
   try {
     const publication = await Publication.findByIdAndDelete(req.params.id);
@@ -76,6 +88,7 @@ const cachePublication = async (req, res) => {
 module.exports = {
   createPublication,
   getPublication,
+  getPublicationById,
   updatePublication,
   deletePublication,
   cachePublication,

@@ -6,6 +6,7 @@ const authMiddleware = require("../Controller/authMiddleware");
 const {
   createPublication,
   getPublication,
+  getPublicationById,
   deletePublication,
   updatePublication,
   cachePublication,
@@ -13,6 +14,7 @@ const {
 
 router.post("/create", authMiddleware, createPublication);
 router.get("/getPublications", getPublication);
+router.get("/getPublication/:id", getPublicationById);
 router.delete("/delete/:id", deletePublication);
 router.put("/edit/:id", updatePublication);
 
