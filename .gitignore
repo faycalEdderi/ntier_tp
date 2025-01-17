@@ -23,10 +23,10 @@ publication/build/
 user/build/
 
 # Environment variables
-frontend/.env
-api-gateway/.env
-publication/.env
-user/.env
+# frontend/.env
+# api-gateway/.env
+# publication/.env
+# user/.env
 
 # Miscellaneous
 .DS_Store

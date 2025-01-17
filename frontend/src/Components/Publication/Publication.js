@@ -14,7 +14,7 @@ const AddPublication = () => {
 
   const fetchPublications = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/publications/getPublications');
+      const response = await axios.get('http://localhost:3001/publications/getPublications');
       setPublications(response.data);
     } catch (error) {
       console.error(error);
@@ -28,7 +28,7 @@ const AddPublication = () => {
       const token = localStorage.getItem('token'); // Retrieve the token from local storage
       if (isEditing) {
         await axios.put(
-          `http://localhost:5000/publications/edit/${selectedPublication._id}`,
+          `http://localhost:3001/publications/edit/${selectedPublication._id}`,
           { title: publication.title },
           {
             headers: {
@@ -39,7 +39,7 @@ const AddPublication = () => {
         alert(`Publication ${publication.title} modifiée avec succès`);
       } else {
         const response = await axios.post(
-          'http://localhost:5000/publications/create',
+          'http://localhost:3001/publications/create',
           { title: publication.title },
           {
             headers: {
@@ -62,7 +62,7 @@ const AddPublication = () => {
   const handleDelete = async (id) => {
     try {
       const token = localStorage.getItem('token'); // Retrieve the token from local storage
-      await axios.delete(`http://localhost:5000/publications/delete/${id}`, {
+      await axios.delete(`http://localhost:3001/publications/delete/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`, // Include the token in the request headers
         },
@@ -77,7 +77,7 @@ const AddPublication = () => {
 
   const handleSelect = async (id) => {
     try {
-      const response = await axios.get(`http://localhost:5000/publications/getPublication/${id}`);
+      const response = await axios.get(`http://localhost:3001/publications/getPublication/${id}`);
       setSelectedPublication(response.data);
     } catch (error) {
       console.error(error);
